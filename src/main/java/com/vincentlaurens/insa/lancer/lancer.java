@@ -1,24 +1,19 @@
 package com.vincentlaurens.insa.lancer;
 
-import com.vincentlaurens.insa.ui.DialoguePage;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import com.vincentlaurens.insa.ui.view.LoginPageViewer;
 
 import java.awt.*;
+import javax.swing.*;
 
 public class lancer {
 
 
     public static void main (String[] args){
-        Frame frame = new Frame();
+        JFrame frame = new JFrame();
 
-        DialoguePage loginDlg = new DialoguePage(frame);
+        LoginPageViewer loginDlg = new LoginPageViewer(frame);
         loginDlg.setVisible(true);
-        loginDlg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 100);
-        frame.setLayout(new FlowLayout());
-        frame.setVisible(true);
+        loginDlg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 }

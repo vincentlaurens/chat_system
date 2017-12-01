@@ -1,18 +1,23 @@
-package com.vincentlaurens.insa.ui;
+package com.vincentlaurens.insa.ui.view;
 
+import com.vincentlaurens.insa.ui.controller.LoginPageController;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class DialoguePage extends JDialog {
+public class LoginPageViewer extends JDialog{
     private final JLabel labelLogin, labelMotDePasse;
     private final JTextField textFieldLogin;
     private final JPasswordField fieldMotdePasse;
     private final JButton btnLogin, btnCancel;
+    private LoginPageController loginController;
 
-    public DialoguePage(Frame parent) {
-        super(parent, "Login", true);
+    public LoginPageViewer(JFrame parent) {
+
+        super(parent, "Connexion", true);
+
+        this.loginController = new LoginPageController();
         //
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints cs = new GridBagConstraints();
@@ -45,8 +50,9 @@ public class DialoguePage extends JDialog {
         panel.setBorder(new LineBorder(Color.GRAY));
 
         btnLogin = new JButton("Login");
+        btnLogin.addActionListener(e-> this.loginController.onLoginButtonClicked(textFieldLogin.getText(), fieldMotdePasse.getPassword(), parent));
         btnCancel = new JButton("Cancel");
-
+        btnCancel.addActionListener(e-> this.loginController.onCancelButtonClicked(parent));
         JPanel bp = new JPanel();
         bp.add(btnLogin);
         bp.add(btnCancel);
@@ -62,4 +68,3 @@ public class DialoguePage extends JDialog {
 
     }
 }
-
